@@ -4,7 +4,7 @@ module ChargeBee
     IDEMPOTENCY_REPLAYED_HEADER = :chargebee_idempotency_replayed
 
     def initialize(response, rheaders = nil)
-        @response = response
+      @response = response
         @rheaders = rheaders
     end
 
@@ -66,7 +66,7 @@ module ChargeBee
 
     def payment_source() 
         payment_source = get(:payment_source, PaymentSource,
-        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :cust_voucher_source => PaymentSource::CustVoucherSource, :billing_address => PaymentSource::BillingAddress, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :mandates => PaymentSource::Mandate});
+        {:card => PaymentSource::Card, :bank_account => PaymentSource::BankAccount, :cust_voucher_source => PaymentSource::CustVoucherSource, :billing_address => PaymentSource::BillingAddress, :amazon_payment => PaymentSource::AmazonPayment, :upi => PaymentSource::Upi, :paypal => PaymentSource::Paypal, :venmo => PaymentSource::Venmo, :mandates => PaymentSource::Mandate});
         return payment_source;
     end
 
@@ -92,8 +92,13 @@ module ChargeBee
 
     def invoice() 
         invoice = get(:invoice, Invoice,
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice});
         return invoice;
+    end
+
+    def payment_reference_number() 
+        payment_reference_number = get(:payment_reference_number, PaymentReferenceNumber);
+        return payment_reference_number;
     end
 
     def tax_withheld() 
@@ -127,7 +132,7 @@ module ChargeBee
 
     def transaction() 
         transaction = get(:transaction, Transaction,
-        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment});
+        {:linked_invoices => Transaction::LinkedInvoice, :linked_credit_notes => Transaction::LinkedCreditNote, :linked_refunds => Transaction::LinkedRefund, :linked_payments => Transaction::LinkedPayment, :gateway_error_detail => Transaction::GatewayErrorDetail});
         return transaction;
     end
 
@@ -324,7 +329,12 @@ module ChargeBee
         return item_entitlement;
     end
 
-    def in_app_subscription() 
+    def entitlement()
+        entitlement = get(:entitlement, Entitlement);
+        return entitlement;
+    end
+
+    def in_app_subscription()
         in_app_subscription = get(:in_app_subscription, InAppSubscription);
         return in_app_subscription;
     end
@@ -349,7 +359,6 @@ module ChargeBee
         {:linked_invoices => PaymentVoucher::LinkedInvoice});
         return payment_voucher;
     end
-
 
     def unbilled_charges()
         unbilled_charges = get_list(:unbilled_charges, UnbilledCharge,
@@ -383,7 +392,7 @@ module ChargeBee
     
     def invoices()
         invoices = get_list(:invoices, Invoice,
-        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice});
+        {:line_items => Invoice::LineItem, :discounts => Invoice::Discount, :line_item_discounts => Invoice::LineItemDiscount, :taxes => Invoice::Tax, :line_item_taxes => Invoice::LineItemTax, :line_item_tiers => Invoice::LineItemTier, :linked_payments => Invoice::LinkedPayment, :dunning_attempts => Invoice::DunningAttempt, :applied_credits => Invoice::AppliedCredit, :adjustment_credit_notes => Invoice::AdjustmentCreditNote, :issued_credit_notes => Invoice::IssuedCreditNote, :linked_orders => Invoice::LinkedOrder, :notes => Invoice::Note, :shipping_address => Invoice::ShippingAddress, :statement_descriptor => Invoice::StatementDescriptor, :billing_address => Invoice::BillingAddress, :einvoice => Invoice::Einvoice});
         return invoices;
     end
     

@@ -18,7 +18,7 @@ module ChargeBee
     end
 
     class LineItemTax < Model
-      attr_accessor :line_item_id, :tax_name, :tax_rate, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
+      attr_accessor :line_item_id, :tax_name, :tax_rate, :date_to, :date_from, :prorated_taxable_amount, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
     end
 
     class LineItemTier < Model
@@ -37,8 +37,8 @@ module ChargeBee
   :operation_type, :vat_number, :price_type, :valid_till, :date, :total_payable, :charge_on_acceptance,
   :sub_total, :total, :credits_applied, :amount_paid, :amount_due, :version, :resource_version,
   :updated_at, :vat_number_prefix, :line_items, :discounts, :line_item_discounts, :taxes, :line_item_taxes,
-  :line_item_tiers, :currency_code, :notes, :shipping_address, :billing_address, :contract_term_start,
-  :contract_term_end, :contract_term_termination_fee, :business_entity_id
+  :line_item_tiers, :tax_category, :currency_code, :notes, :shipping_address, :billing_address,
+  :contract_term_start, :contract_term_end, :contract_term_termination_fee, :business_entity_id
 
   # OPERATIONS
   #-----------

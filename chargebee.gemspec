@@ -4,20 +4,23 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.5'
   s.required_ruby_version = '>= 1.9.3'
   s.name              = 'chargebee'
-  s.version           = '2.27.1'
-  s.date              = '2023-05-31'
+  s.version           = '2.35.0'
+  s.date              = '2024-01-31'
   s.summary     = "Ruby client for Chargebee API."
   s.description = "Subscription Billing - Simple. Secure. Affordable. More details at www.chargebee.com."
+  s.metadata = {
+    "changelog_uri" => "https://github.com/chargebee/chargebee-ruby/blob/master/CHANGELOG.md"
+  }
 
   s.authors = ['Rajaraman S', 'Thiyagarajan T']
   s.email = ['rr@chargebee.com', 'thiyagu@chargebee.com']
-  s.homepage = 'https://apidocs.chargebee.com/api/docs?lang=ruby'
+  s.homepage = 'https://apidocs.chargebee.com/docs/api?lang=ruby'
   s.license = 'MIT'
 
   s.require_paths = %w[lib]
 
   s.rdoc_options = ["--charset=UTF-8"]
-  s.extra_rdoc_files = %w[README.rdoc LICENSE]
+  s.extra_rdoc_files = %w[README.md LICENSE]
 
   s.add_dependency('json_pure', '~> 2.1')
   s.add_dependency('rest-client', '>=1.8', '~> 2.1.0')
@@ -52,10 +55,12 @@ Gem::Specification.new do |s|
     lib/chargebee/models/coupon_set.rb
     lib/chargebee/models/credit_note.rb
     lib/chargebee/models/credit_note_estimate.rb
+    lib/chargebee/models/csv_tax_rule.rb
     lib/chargebee/models/customer.rb
     lib/chargebee/models/differential_price.rb
     lib/chargebee/models/discount.rb
     lib/chargebee/models/download.rb
+    lib/chargebee/models/entitlement.rb
     lib/chargebee/models/entitlement_override.rb
     lib/chargebee/models/estimate.rb
     lib/chargebee/models/event.rb
@@ -77,6 +82,7 @@ Gem::Specification.new do |s|
     lib/chargebee/models/non_subscription.rb
     lib/chargebee/models/order.rb
     lib/chargebee/models/payment_intent.rb
+    lib/chargebee/models/payment_reference_number.rb
     lib/chargebee/models/payment_source.rb
     lib/chargebee/models/payment_voucher.rb
     lib/chargebee/models/plan.rb

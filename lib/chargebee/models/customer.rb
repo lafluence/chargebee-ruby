@@ -42,18 +42,18 @@ module ChargeBee
   :is_location_valid, :created_at, :created_from_ip, :exemption_details, :taxability, :entity_code,
   :exempt_number, :resource_version, :updated_at, :locale, :billing_date, :billing_month, :billing_date_mode,
   :billing_day_of_week, :billing_day_of_week_mode, :pii_cleared, :auto_close_invoices, :channel,
-  :card_status, :fraud_flag, :primary_payment_source_id, :backup_payment_source_id, :billing_address,
-  :referral_urls, :contacts, :payment_method, :invoice_notes, :business_entity_id, :preferred_currency_code,
-  :promotional_credits, :unbilled_charges, :refundable_credits, :excess_payments, :balances, :entity_identifiers,
-  :is_einvoice_enabled, :einvoicing_method, :meta_data, :deleted, :registered_for_gst, :consolidated_invoicing,
-  :customer_type, :business_customer_without_vat_number, :client_profile_id, :relationship, :use_default_hierarchy_settings,
-  :parent_account_access, :child_account_access, :vat_number_prefix, :entity_identifier_scheme,
-  :entity_identifier_standard
+  :active_id, :card_status, :fraud_flag, :primary_payment_source_id, :backup_payment_source_id,
+  :billing_address, :referral_urls, :contacts, :payment_method, :invoice_notes, :business_entity_id,
+  :preferred_currency_code, :promotional_credits, :unbilled_charges, :refundable_credits, :excess_payments,
+  :balances, :entity_identifiers, :is_einvoice_enabled, :einvoicing_method, :meta_data, :deleted,
+  :registered_for_gst, :consolidated_invoicing, :customer_type, :business_customer_without_vat_number,
+  :client_profile_id, :relationship, :use_default_hierarchy_settings, :parent_account_access,
+  :child_account_access, :vat_number_prefix, :entity_identifier_scheme, :entity_identifier_standard
 
   # OPERATIONS
   #-----------
 
-  def self.create(params, env=nil, headers={})
+  def self.create(params={}, env=nil, headers={})
     Request.send('post', uri_path("customers"), params, env, headers)
   end
 
@@ -65,7 +65,7 @@ module ChargeBee
     Request.send('get', uri_path("customers",id.to_s), {}, env, headers)
   end
 
-  def self.update(id, params, env=nil, headers={})
+  def self.update(id, params={}, env=nil, headers={})
     Request.send('post', uri_path("customers",id.to_s), params, env, headers)
   end
 

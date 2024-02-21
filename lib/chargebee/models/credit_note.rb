@@ -26,7 +26,7 @@ module ChargeBee
     end
 
     class LineItemTax < Model
-      attr_accessor :line_item_id, :tax_name, :tax_rate, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
+      attr_accessor :line_item_id, :tax_name, :tax_rate, :date_to, :date_from, :prorated_taxable_amount, :is_partial_tax_applied, :is_non_compliance_tax, :taxable_amount, :tax_amount, :tax_juris_type, :tax_juris_name, :tax_juris_code, :tax_amount_in_local_currency, :local_currency_code
     end
 
     class LinkedRefund < Model
@@ -50,8 +50,8 @@ module ChargeBee
   :amount_available, :refunded_at, :voided_at, :generated_at, :resource_version, :updated_at,
   :channel, :einvoice, :sub_total, :sub_total_in_local_currency, :total_in_local_currency, :local_currency_code,
   :round_off_amount, :fractional_correction, :line_items, :discounts, :line_item_discounts, :line_item_tiers,
-  :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :create_reason_code, :vat_number_prefix,
-  :business_entity_id, :shipping_address, :billing_address
+  :taxes, :line_item_taxes, :linked_refunds, :allocations, :deleted, :tax_category, :local_currency_exchange_rate,
+  :create_reason_code, :vat_number_prefix, :business_entity_id, :shipping_address, :billing_address
 
   # OPERATIONS
   #-----------
